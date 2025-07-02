@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GHSS NSS Unit 500 | National Service Scheme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobile-first responsive styles */
+        @media (max-width: 767px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+            .timeline-item::after {
+                display: none;
+            }
+        }
+
+        /* Custom CSS for animations and effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -40px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background-color: #3b82f6;
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-10 w-auto" src="https://i.pinimg.com/736x/b3/1b/58/b31b58a0790bb60eeabc0d1a2d855b68.jpg" alt="NSS Logo">
+                        <span class="ml-2 text-xl font-bold text-blue-600">GHSS NSS Unit 500</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-blue-600 px-2 py-1 text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-900 hover:text-blue-600 px-2 py-1 text-sm font-medium">About</a>
+                    <a href="#activities" class="text-gray-900 hover:text-blue-600 px-2 py-1 text-sm font-medium">Activities</a>
+                    <a href="#journey" class="text-gray-900 hover:text-blue-600 px-2 py-1 text-sm font-medium">Journey</a>
+                    <a href="#gallery" class="text-gray-900 hover:text-blue-600 px-2 py-1 text-sm font-medium">Gallery</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600">About</a>
+                <a href="#activities" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600">Activities</a>
+                <a href="#journey" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600">Our Journey</a>
+                <a href="#gallery" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-blue-600">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="NSS Volunteers" class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <h1 class="text-3xl md:text-6xl font-bold text-white mb-4 animate-fade-in">National Service Scheme</h1>
+            <p class="text-lg md:text-2xl text-blue-200 mb-6 animate-fade-in delay-100">Unit No. 500 | GHSS Medical College Campus</p>
+            <p class="text-xl md:text-3xl font-semibold text-yellow-300 mb-8 animate-fade-in delay-200">"Not Me, But You"</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-300">
+                <a href="#gallery" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-100">
+                    <i class="fas fa-images mr-2"></i> View Activities
+                </a>
+                <a href="https://instagram.com" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700">
+                    <i class="fab fa-instagram mr-2"></i> Instagram Feed
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-fade-in delay-400">
+            <a href="#about" class="text-white animate-bounce">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    About NSS
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Serving the community since 2022
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">What is NSS?</h3>
+                    <p class="text-gray-600 mb-6">
+                        The National Service Scheme (NSS) is a Central Sector Scheme of Government of India, Ministry of Youth Affairs & Sports. It provides opportunity to the student youth to take part in various government led community service activities & programmes.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        The sole aim of the NSS is to provide hands on experience to young students in delivering community service. Since its inception in 1969, the NSS has been covering various colleges, universities and +2 level institutes.
+                    </p>
+                    <p class="text-gray-600">
+                        Our GHSS NSS Unit 500 was established in 2022 with the vision to create socially responsible citizens who contribute to nation building through voluntary community service.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                            <i class="fas fa-hands-helping text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Unity & Volunteerism</h4>
+                        <p class="text-gray-600">
+                            Fostering unity through selfless service to the community
+                        </p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg shadow-sm text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-600 mb-4">
+                            <i class="fas fa-hand-holding-heart text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Social Upliftment</h4>
+                        <p class="text-gray-600">
+                            Working towards the betterment of underprivileged sections
+                        </p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-6 rounded-lg shadow-sm text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Youth Leadership</h4>
+                        <p class="text-gray-600">
+                            Developing leadership qualities among young volunteers
+                        </p>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-6 rounded-lg shadow-sm text-center">
+                        <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-purple-100 text-purple-600 mb-4">
+                            <i class="fas fa-heartbeat text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Health Awareness</h4>
+                        <p class="text-gray-600">
+                            Promoting health and hygiene in the community
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Our Activities
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Making a difference through various initiatives
+                </div>
+            </div>
+            
+            <div class="flex justify-center mb-12">
+                <div class="flex flex-wrap justify-center gap-2" role="group">
+                    <button type="button" class="activity-filter px-4 py-2 text-sm font-medium rounded-l-lg bg-blue-600 text-white hover:bg-blue-700" data-filter="all">
+                        All Activities
+                    </button>
+                    <button type="button" class="activity-filter px-4 py-2 text-sm font-medium bg-white text-gray-700 hover:bg-gray-50" data-filter="cleanup">
+                        Clean-up Drives
+                    </button>
+                    <button type="button" class="activity-filter px-4 py-2 text-sm font-medium bg-white text-gray-700 hover:bg-gray-50" data-filter="blood">
+                        Blood Donation
+                    </button>
+                    <button type="button" class="activity-filter px-4 py-2 text-sm font-medium bg-white text-gray-700 hover:bg-gray-50" data-filter="awareness">
+                        Awareness
+                    </button>
+                    <button type="button" class="activity-filter px-4 py-2 text-sm font-medium rounded-r-lg bg-white text-gray-700 hover:bg-gray-50" data-filter="cultural">
+                        Cultural Events
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="activities-container">
+                <!-- Activity cards will be dynamically filtered -->
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="cleanup">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Clean-up Drive" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-full">Clean-up Drive</span>
+                            <span class="ml-auto text-sm text-gray-500">Jan 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Campus Cleanliness Campaign</h3>
+                        <p class="text-gray-600 mb-4">
+                            Organized a massive clean-up drive across the school campus involving 50+ volunteers to promote cleanliness and hygiene.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="blood">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blood Donation Camp" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-red-800 bg-red-100 rounded-full">Blood Donation</span>
+                            <span class="ml-auto text-sm text-gray-500">Mar 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Annual Blood Donation Camp</h3>
+                        <p class="text-gray-600 mb-4">
+                            Collaborated with local blood bank to organize a donation camp where 75 units of blood were collected to help those in need.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="awareness">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Awareness Rally" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">Awareness</span>
+                            <span class="ml-auto text-sm text-gray-500">Jun 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Anti-Drug Awareness Rally</h3>
+                        <p class="text-gray-600 mb-4">
+                            Conducted a rally through the town to raise awareness about the dangers of drug abuse, reaching over 500 community members.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="cultural">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cultural Event" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-purple-800 bg-purple-100 rounded-full">Cultural Event</span>
+                            <span class="ml-auto text-sm text-gray-500">Aug 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Traditional Folk Festival</h3>
+                        <p class="text-gray-600 mb-4">
+                            Organized a cultural evening showcasing local folk arts to preserve and promote our rich cultural heritage among youth.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="cleanup">
+                    <img src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Beach Clean-up" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-full">Clean-up Drive</span>
+                            <span class="ml-auto text-sm text-gray-500">Oct 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Coastal Cleanliness Drive</h3>
+                        <p class="text-gray-600 mb-4">
+                            Led a beach clean-up initiative collecting over 200kg of waste, educating locals about marine pollution and its impact.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden gallery-item" data-category="awareness">
+                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2aedf6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tree Plantation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">Awareness</span>
+                            <span class="ml-auto text-sm text-gray-500">Dec 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Green Campus Initiative</h3>
+                        <p class="text-gray-600 mb-4">
+                            Planted 100+ saplings across the campus and conducted workshops on environmental conservation for students.
+                        </p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center">
+                            View Photos <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section id="journey" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Our Journey
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Milestones in our path of service
+                </div>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-200 transform -translate-x-1/2"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-8 md:space-y-16">
+                    <!-- Item 1 -->
+                    <div class="relative timeline-item">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
+                                <div class="p-6 bg-blue-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-blue-800 mb-2">Unit Established</h3>
+                                    <p class="text-gray-600">
+                                        GHSS NSS Unit 500 was officially inaugurated with 30 founding volunteers under the guidance of our program officer.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white border-4 border-white shadow-md">
+                            <span class="font-bold">2022</span>
+                        </div>
+                        <div class="md:flex items-center">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <div class="p-6 bg-gray-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-2">First Major Initiative</h3>
+                                    <p class="text-gray-600">
+                                        Organized our first large-scale community service project - a school renovation program benefiting local government school.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative timeline-item">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
+                                <div class="p-6 bg-green-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-green-800 mb-2">Volunteer Growth</h3>
+                                    <p class="text-gray-600">
+                                        Our unit expanded to 50+ active volunteers, becoming one of the most popular extracurricular activities in the school.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-green-600 text-white border-4 border-white shadow-md">
+                            <span class="font-bold">2023</span>
+                        </div>
+                        <div class="md:flex items-center">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <div class="p-6 bg-purple-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-purple-800 mb-2">Community Recognition</h3>
+                                    <p class="text-gray-600">
+                                        Received appreciation from local authorities for our flood relief efforts during the monsoon season.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="relative timeline-item">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
+                                <div class="p-6 bg-yellow-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-yellow-800 mb-2">Best Unit Award</h3>
+                                    <p class="text-gray-600">
+                                        Recognized as the "Best NSS Unit in District" for outstanding community service and volunteer engagement.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-yellow-500 text-white border-4 border-white shadow-md">
+                            <span class="font-bold">2024</span>
+                        </div>
+                        <div class="md:flex items-center">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-12">
+                                <div class="p-6 bg-red-50 rounded-lg shadow-sm">
+                                    <h3 class="text-xl font-bold text-red-800 mb-2">National Conference</h3>
+                                    <p class="text-gray-600">
+                                        Represented our district at the National NSS Conference, sharing our innovative approaches to community service.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Gallery
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Moments from our journey of service
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Volunteers working" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Blood donation camp" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Awareness program" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Tree plantation" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Cultural event" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Volunteers celebrating" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">View Our Event Gallery</h3>
+                <a href="https://drive.google.com/drive/u/6/folders/1e5F_z1IAi49qccdclB1gk6KsHj2B2j_D" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 mb-8">
+                    <i class="fas fa-images mr-2"></i> Google Drive Gallery
+                </a>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 mt-8">Follow Us on Instagram</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://instagram.com/campus.nss" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+                        <i class="fab fa-instagram mr-2 text-xl"></i> @campus.nss
+                    </a>
+                    <a href="https://instagram.com/connecting_nss" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600">
+                        <i class="fab fa-instagram mr-2 text-xl"></i> @connecting_nss
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Connect With Us
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    We'd love to hear from you
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Our Address</h3>
+                    <p class="text-gray-600">
+                        GHSS Medical College Campus<br>
+                        Main Road, City Center<br>
+                        District - 123456
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Email Us</h3>
+                    <p class="text-gray-600">
+                        <a href="mailto:campus.hss.2k24@gmail.com" class="text-blue-600 hover:text-blue-800">campus.hss.2k24@gmail.com</a><br>
+                        <a href="tel:8849436475" class="text-blue-600 hover:text-blue-800">+91 8849436475</a>
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-purple-100 text-purple-600 mb-4">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Call Us</h3>
+                    <p class="text-gray-600">
+                        Program Officer: +91 9876543210<br>
+                        Unit Leader: +91 9876543211
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white p-8 rounded-lg shadow-sm">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.01604705144!2d75.822125!3d11.268829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDE2JzA3LjgiTiA3NcKwNDknMjguOSJF!5e0!3m2!1sen!2sin!4v1625736879998!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join NSS Section -->
+    <section id="join" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Join NSS
+                </h2>
+                <div class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                    Become part of our volunteer community
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Contact NSS In-charge</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https//campus.hss.2k24@gmail.com" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                        <i class="fas fa-envelope mr-2"></i> Email
+                    </a>
+                    <a href="tel:8849436475" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
+                        <i class="fas fa-phone mr-2"></i> Call
+                    </a>
+                    <a href="https://wa.me/918849436475" target="_blank" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 space-y-8 md:space-y-0">
+                <div>
+                    <div class="flex items-center">
+                        <img class="h-10 w-auto" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/National_Service_Scheme_logo.svg/1200px-National_Service_Scheme_logo.svg.png" alt="NSS Logo">
+                        <span class="ml-2 text-xl font-bold">GHSS NSS Unit 500</span>
+                    </div>
+                    <p class="mt-4 text-gray-400">
+                        Dedicated to community service and youth development since 2022.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#join" class="text-gray-400 hover:text-white">Join</a></li>
+                        <li><a href="#activities" class="text-gray-400 hover:text-white">Events</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Annual Reports</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Volunteer Handbook</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Event Calendar</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Photo Archives</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">NSS Guidelines</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">
+                        Subscribe to our newsletter for updates on upcoming events and activities.
+                    </p>
+                    <form class="mt-4 sm:flex">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-5 py-3 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs border-gray-300 rounded-md" placeholder="Enter your email">
+                        <button type="submit" class="mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="flex justify-center md:order-2 space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gray-300">
+                            <span class="sr-only">Privacy Policy</span>
+                            Privacy
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-300">
+                            <span class="sr-only">Terms of Service</span>
+                            Terms
+                        </a>
+                    </div>
+                    <div class="mt-8 md:mt-0 md:order-1">
+                        <p class="text-center text-base text-gray-400">
+                            &copy; 2023 GHSS NSS Unit 500. All rights reserved.
+                        </p>
+                        <p class="text-center text-sm text-gray-500 mt-1">
+                            Developed by Nexa Arts & Designs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Calculate the scroll position, accounting for fixed header
+                    const headerHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Activity filter functionality
+        const filterButtons = document.querySelectorAll('.activity-filter');
+        const activityCards = document.querySelectorAll('.activity-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button styling
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                    btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-50');
+                });
+                
+                this.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-50');
+                this.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-700');
+                
+                // Filter activities
+                const filter = this.getAttribute('data-filter');
+                
+                activityCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.timeline-item, .testimonial-card, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
